@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\ExternalApiService;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 
 
 class SaleController extends Controller
