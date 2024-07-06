@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
@@ -10,13 +11,13 @@ use App\Models\Category;
 class CategoryController extends Controller
 {   
     
-    public function api_index()
+    public function index()
     {
         $categories = Category::all();
         return view('index',['categories' => $categories]);
     }
 
-    public function api_store(CategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
         $category = new Category();
 
@@ -31,14 +32,14 @@ class CategoryController extends Controller
 
 
 
-    public function api_show($id)
+    public function show($id)
     {
         $categories = Category::findOrFail($id);
         return view('show', ['categories' => $categories]);
     }
 
    
-    public function api_update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
 
         $category = Category::findOrFail($id);
@@ -51,7 +52,7 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function api_destroy($id)
+    public function destroy($id)
     {
 
         $category = Category::findOrFail($id);
@@ -59,6 +60,14 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->route('categories.index');
+    }
+
+
+    public function searchTable(): View
+    {
+        $sTable = Category::table('description')->get();
+
+        return view('search.table', ['description' => $sTable]);
     }
     
 }

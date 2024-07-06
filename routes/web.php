@@ -12,7 +12,9 @@ Route::get('/category/{category}', [CategoryController::class, 'show'])->name('c
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+//search
 
+Route::get('/search', [ApiCategoryController::class, 'searchTable'])->name('search.table');
 
 
 

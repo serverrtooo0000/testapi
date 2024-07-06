@@ -24,3 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', [ApiCategoryController::class, 'api_index']);
 Route::post('/category', [ApiCategoryController::class, 'api_show']);
 Route::get('/category{category}', [ApiCategoryController::class, 'api_store']);
+Route::put('/category/{id}', [ApiCategoryController::class, 'update']);
+Route::delete('/category/{category}', [ApiCategoryController::class, 'destroy']);
+
+
